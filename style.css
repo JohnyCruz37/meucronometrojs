@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "digital";
+  font-family: "retro";
   src: url(./Retro\ Gaming.ttf);
 }
 @font-face {
@@ -12,92 +12,81 @@
   box-sizing: border-box;
 }
 
-.area-tela {
-  background-color: grey;
+h1 {
+  font-size: 2em;
+  font-family: "aller", sans-serif;
+  color: #fff;
+}
+
+h2 {
+  font-size: 7em;
+}
+
+h3 {
+  font-size: 4em;
+}
+
+h4 {
+  font-size: 2em;
+}
+
+:root {
+  --claro: #5a944d;
+  --escuro: #051e22;
+}
+
+main, .relogio, .controle, .btn, .area-minutos-segundos, .numeros {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-flow: row nowrap;
+  background: linear-gradient(135deg, var(--escuro) 60%, var(--claro));
 }
-.area-tela h1, .area-tela p {
-  text-transform: capitalize;
+body header {
+  padding: 2em;
 }
-.area-tela .celular {
-  border-radius: 30px;
-  background-color: #000000;
-  width: 360px;
-  height: 550px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-flow: row nowrap;
-}
-.area-tela .celular .viewport {
-  width: 330px;
-  height: 520px;
-  border-radius: 30px;
-}
-.area-tela .celular .viewport .topo-celular p {
-  color: wheat;
-}
-.area-tela .celular .viewport .area-celular {
+body main {
   width: 100%;
-  height: 440px;
-  border-radius: 30px 30px 0 0;
-  background-color: #110e0e;
+  height: calc(100% - 7em);
 }
-.area-tela .celular .viewport .menu {
-  width: 100%;
-  height: 50px;
-  display: flex;
+body main .tempo {
+  font-family: "retro", sans-serif;
+  color: #fff;
+}
+body main .relogio {
   flex-direction: row;
-  justify-content: spacing-around;
-  align-items: center;
-  flex-flow: row nowrap;
-  background-color: rgba(158, 149, 149, 0.3607843137);
 }
-.area-tela .celular .viewport .menu .item {
-  width: 25%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column nowrap;
+body main .relogio .area-minutos-segundos {
+  width: 20em;
+  height: 20em;
+  align-items: flex-end;
+  border-radius: 10em;
+  box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.2549019608);
+  background: linear-gradient(135deg, var(--claro), var(--escuro) 30%);
+  position: relative;
 }
-.area-tela .celular .viewport .menu .item i,
-.area-tela .celular .viewport .menu .item p {
-  font-size: 1em;
-  color: #d2d2d2;
+body main .relogio .area-minutos-segundos .numeros {
+  align-items: flex-end;
+  position: absolute;
+  left: 25%;
+  right: 25%;
 }
-.area-tela .celular .viewport .menu .active i, .area-tela .celular .viewport .menu .active p {
-  color: #139feb;
-}
-.area-tela .celular .viewport .btn-celular {
-  width: 100%;
-  height: 30px;
-  display: flex;
+body main .controle {
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-flow: row nowrap;
-  border-radius: 0 0 30px 30px;
-  background-color: #110e0e;
 }
-.area-tela .celular .viewport .btn-celular .btn-celular-item {
-  width: 33%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-flow: row nowrap;
+body main .controle .btn {
+  border: none;
+  border-radius: 50%;
+  padding: 1em;
 }
-.area-tela .celular .viewport .btn-celular .btn-celular-item i {
-  font-size: small;
-  color: #d2d2d2;
+body main .controle .btn i {
+  font-size: 3em;
+}
+body main .controle #btnPausar, body main .controle #btnContinuar, body main .controle #btnResetar {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

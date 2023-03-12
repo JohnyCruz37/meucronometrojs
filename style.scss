@@ -1,95 +1,101 @@
-//MIXINS
-@use "./mixins";
-
-// FONTES
-
 @font-face {
-    font-family: 'digital';
+    font-family: 'retro';
     src: url(./Retro\ Gaming.ttf);
 }
-
 @font-face {
     font-family: 'aller';
     src: url(./Aller-Light.ttf);
 }
 
-
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+h1{
+    font-size: 2em;
+    font-family: 'aller', sans-serif;
+    color: #fff;
+}
+h2{
+    font-size: 7em;
+}
+h3{
+    font-size: 4em;
+}
+h4{
+    font-size: 2em;
+}
 
-.area-tela {
-    background-color: grey;
-    @include mixins.wh(100vw, 100vh);
-    @include mixins.flex(column, center, center, row, nowrap);
-    h1, p{
-        text-transform: capitalize;
+:root{
+    --claro: #5a944d;
+    --escuro: #051e22;
+}
+
+// CSS AGRUPADO
+main, .relogio, .controle, .btn, .area-minutos-segundos, .numeros{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+// CSS CASCATA
+body{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--escuro) 60%, var(--claro));
+    header{
+        padding: 2em;
     }
 
-    .celular {
-        border-radius: 30px;
-        background-color: #000000;
-        @include mixins.wh(360px, 550px);
-        @include mixins.flex(column, center, center, row, nowrap);
+    main{
+        width: 100%;
+        height: calc(100% - 7em);
 
-        .viewport {
-            @include mixins.wh(330px, 520px);
-            border-radius: 30px;
+        .tempo{
+            font-family: 'retro', sans-serif;
+            color: #fff;
+        }
 
-            .topo-celular{
-                p{
-                    color: wheat;
+        .relogio{
+            flex-direction: row;
+            .area-minutos-segundos{
+                width: 20em;
+                height: 20em;
+                align-items: flex-end;
+                border-radius: 10em;
+                box-shadow: 3px 3px 10px #ffffff41;
+                background: linear-gradient(135deg, var(--claro), var(--escuro) 30%);
+
+                position: relative;
+
+                .numeros{
+                    align-items: flex-end;
+                    position: absolute;
+                    left: 25%;
+                    right: 25%;
+
+                }
+            }
+            
+        }
+        .controle{
+            flex-direction: row;
+            .btn{
+                border: none;
+                border-radius: 50%;
+                padding: 1em;
+
+                i{
+                    font-size: 3em;
                 }
             }
 
-            .area-celular {
-                @include mixins.wh(100%, 440px);
-                border-radius: 30px 30px 0 0;
-                background-color: #110e0e;
-
-            }
-
-            .menu {
-                @include mixins.wh(100%, 50px);
-                @include mixins.flex(row, spacing-around, center, row, nowrap);
-                background-color: #9e95955c;
-
-                .item {
-                    @include mixins.wh(25%, 100%);
-                    @include mixins.flex(column, center, center, column, nowrap);
-
-                    i,
-                    p {
-                        font-size: 1em;
-                        color: #d2d2d2;
-                    }
-                }
-                .active{
-                    i, p{
-                        color: #139feb;
-                    }
-                }
-
-            }
-
-            .btn-celular {
-                @include mixins.wh(100%, 30px);
-                @include mixins.flex(row, center, center, row, nowrap);
-                border-radius: 0 0 30px 30px;
-                background-color: #110e0e;
-
-                .btn-celular-item {
-                    @include mixins.wh(33%, 100%);
-                    @include mixins.flex(row, center, center, row, nowrap);
-
-                    i {
-                        font-size: small;
-                        color: #d2d2d2;
-                    }
-                }
+            #btnPausar, #btnContinuar, #btnResetar{
+                display: none;
             }
         }
     }
 }
+

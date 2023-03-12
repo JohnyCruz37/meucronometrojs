@@ -1,0 +1,24 @@
+@mixin flex($fd, $jc, $ai){
+    display: flex;
+    flex-direction: $fd;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+@mixin wh($w, $h){
+    width: $w;
+    height: $h;
+}
+
+@mixin border($px, $mod, $cor){
+    border: $px $mod $cor;
+}
+
+@mixin circulo(){
+    border-radius: 10em;
+    box-shadow: 3px 3px 5px #5a944d;
+    background: linear-gradient(135deg, var(--claro), var(--escuro) 30%);
+    align-items: flex-end;
+    position: relative;
+
+}

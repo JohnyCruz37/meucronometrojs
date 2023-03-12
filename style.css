@@ -1,8 +1,4 @@
 @font-face {
-  font-family: "retro";
-  src: url(./Retro\ Gaming.ttf);
-}
-@font-face {
   font-family: "aller";
   src: url(./Aller-Light.ttf);
 }
@@ -10,12 +6,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: #fff;
+  font-family: "aller", sans-serif;
 }
 
-h1 {
+h1, h4 {
   font-size: 2em;
-  font-family: "aller", sans-serif;
-  color: #fff;
 }
 
 h2 {
@@ -26,16 +22,12 @@ h3 {
   font-size: 4em;
 }
 
-h4 {
-  font-size: 2em;
-}
-
 :root {
   --claro: #5a944d;
   --escuro: #051e22;
 }
 
-main, .relogio, .controle, .btn, .area-minutos-segundos, .numeros {
+.relogio, .controle, .btn, .area-minutos-segundos, .numeros, .area-milesimos {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,29 +37,27 @@ main, .relogio, .controle, .btn, .area-minutos-segundos, .numeros {
 body {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(135deg, var(--escuro) 60%, var(--claro));
+  background: var(--escuro);
 }
 body header {
   padding: 2em;
+  text-transform: capitalize;
 }
 body main {
   width: 100%;
   height: calc(100% - 7em);
 }
-body main .tempo {
-  font-family: "retro", sans-serif;
-  color: #fff;
-}
 body main .relogio {
   flex-direction: row;
 }
 body main .relogio .area-minutos-segundos {
+  border: 0.5px solid #fff;
   width: 20em;
   height: 20em;
-  align-items: flex-end;
   border-radius: 10em;
-  box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.2549019608);
+  box-shadow: 3px 3px 5px #5a944d;
   background: linear-gradient(135deg, var(--claro), var(--escuro) 30%);
+  align-items: flex-end;
   position: relative;
 }
 body main .relogio .area-minutos-segundos .numeros {
@@ -76,17 +66,62 @@ body main .relogio .area-minutos-segundos .numeros {
   left: 25%;
   right: 25%;
 }
+body main .relogio .area-minutos-segundos .numeros h3 {
+  margin-top: -0.5em;
+}
+body main .relogio .active {
+  animation: animacao 1s infinite;
+}
+body main .relogio .area-milesimos {
+  width: 5em;
+  height: 5em;
+  border-radius: 10em;
+  box-shadow: 3px 3px 5px #5a944d;
+  background: linear-gradient(135deg, var(--claro), var(--escuro) 30%);
+  align-items: flex-end;
+  position: relative;
+  bottom: -6em;
+  right: 4em;
+}
+body main .relogio .area-milesimos #milesimos {
+  position: absolute;
+  left: 10%;
+  right: 25%;
+}
 body main .controle {
+  width: 100%;
+  height: auto;
   flex-direction: row;
+  padding: 2em 0;
 }
 body main .controle .btn {
   border: none;
   border-radius: 50%;
+  margin: 0 1em;
   padding: 1em;
 }
 body main .controle .btn i {
   font-size: 3em;
+  color: #051e22;
 }
 body main .controle #btnPausar, body main .controle #btnContinuar, body main .controle #btnResetar {
   display: none;
+}
+
+@keyframes animacao {
+  0% {
+    box-shadow: 3px 3px 5px #5a944d;
+  }
+  25% {
+    box-shadow: 3px -3px 5px #5a944d;
+  }
+  50% {
+    box-shadow: -3px -3px 5px #5a944d;
+  }
+  75% {
+    box-shadow: -3px 3px 5px #5a944d;
+  }
+  100% {
+    box-shadow: 3px 3px 5px #5a944d;
+  }
 }/*# sourceMappingURL=style.css.map */

@@ -1,7 +1,4 @@
-@font-face {
-    font-family: 'retro';
-    src: url(./Retro\ Gaming.ttf);
-}
+@use 'mixins';
 @font-face {
     font-family: 'aller';
     src: url(./Aller-Light.ttf);
@@ -11,20 +8,18 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-h1{
-    font-size: 2em;
-    font-family: 'aller', sans-serif;
     color: #fff;
+    font-family: 'aller', sans-serif;
+}
+h1, h4{
+    font-size: 2em;
+   
 }
 h2{
     font-size: 7em;
 }
 h3{
     font-size: 4em;
-}
-h4{
-    font-size: 2em;
 }
 
 :root{
@@ -33,42 +28,29 @@ h4{
 }
 
 // CSS AGRUPADO
-main, .relogio, .controle, .btn, .area-minutos-segundos, .numeros{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.relogio, .controle, .btn, .area-minutos-segundos, .numeros, .area-milesimos{
+    @include mixins.flex(column, center, center);
 }
 
 // CSS CASCATA
 body{
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(135deg, var(--escuro) 60%, var(--claro));
+    @include mixins.wh(100vw, 100vh);
+    background: var(--escuro);
     header{
         padding: 2em;
+        text-transform: capitalize;
     }
 
     main{
-        width: 100%;
-        height: calc(100% - 7em);
-
-        .tempo{
-            font-family: 'retro', sans-serif;
-            color: #fff;
-        }
+        @include mixins.wh(100%, calc(100% - 7em));
 
         .relogio{
             flex-direction: row;
-            .area-minutos-segundos{
-                width: 20em;
-                height: 20em;
-                align-items: flex-end;
-                border-radius: 10em;
-                box-shadow: 3px 3px 10px #ffffff41;
-                background: linear-gradient(135deg, var(--claro), var(--escuro) 30%);
 
-                position: relative;
+            .area-minutos-segundos{
+                @include mixins.border(.5px, solid, #fff);
+                @include mixins.wh(20em, 20em);
+                @include mixins.circulo();
 
                 .numeros{
                     align-items: flex-end;
@@ -76,19 +58,42 @@ body{
                     left: 25%;
                     right: 25%;
 
+                    h3{
+                        margin-top: -.5em;
+                    }
+                }
+            }
+            .active{
+                animation: animacao 1s infinite;
+            }
+            .area-milesimos{
+                @include mixins.wh(5em, 5em);
+                @include mixins.circulo();
+                bottom: -6em;
+                right: 4em;
+
+                #milesimos{
+                    position: absolute;
+                    left: 10%;
+                    right: 25%;
+
                 }
             }
             
         }
         .controle{
+            @include mixins.wh(100%, auto);
             flex-direction: row;
+            padding: 2em 0;
             .btn{
                 border: none;
                 border-radius: 50%;
+                margin: 0 1em;
                 padding: 1em;
 
                 i{
                     font-size: 3em;
+                    color: #051e22;
                 }
             }
 
@@ -99,3 +104,10 @@ body{
     }
 }
 
+@keyframes animacao {
+    0%{ box-shadow: 3px 3px 5px #5a944d;}
+    25%{ box-shadow: 3px -3px 5px #5a944d;}
+    50%{box-shadow: -3px -3px 5px #5a944d;}
+    75%{ box-shadow: -3px 3px 5px #5a944d;}
+    100%{ box-shadow: 3px 3px 5px #5a944d;}
+}

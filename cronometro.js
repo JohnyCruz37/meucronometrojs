@@ -6,6 +6,8 @@
  const pausarBtn = document.querySelector('#btnPausar');
  const continuarBtn = document.querySelector('#btnContinuar');
  const resetarBtn = document.querySelector('#btnResetar');
+ const areaMinSeg = document.querySelector('#area-minutos-segundos');
+ const carregar = document.querySelector('#progresso');
 
 //  VARIÁVEIS
 
@@ -46,6 +48,8 @@ function iniciarTempo () {
             segundosEl.textContent = formatoTempo(segundos);
             milesimosEl.textContent = formatoTempoMilesimo(milesimos);
 
+            // ANIMAÇÕES
+            areaMinSeg.classList.add("active");
         }
     }, 10);
 
@@ -61,6 +65,7 @@ function pausarTempo (){
     pausar = true;
     pausarBtn.style.display = 'none';
     continuarBtn.style.display = 'block';
+    areaMinSeg.classList.remove("active");
 
 }
 
@@ -79,6 +84,8 @@ function resetarTempo (){
     resetarBtn.style.display = "none";
     pausarBtn.style.display = "none";
     continuarBtn.style.display = "none";
+
+    areaMinSeg.classList.remove("active");
 
 }
 

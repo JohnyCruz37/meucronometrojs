@@ -1,0 +1,95 @@
+//MIXINS
+@use "./mixins";
+
+// FONTES
+
+@font-face {
+    font-family: 'digital';
+    src: url(./Retro\ Gaming.ttf);
+}
+
+@font-face {
+    font-family: 'aller';
+    src: url(./Aller-Light.ttf);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.area-tela {
+    background-color: grey;
+    @include mixins.wh(100vw, 100vh);
+    @include mixins.flex(column, center, center, row, nowrap);
+    h1, p{
+        text-transform: capitalize;
+    }
+
+    .celular {
+        border-radius: 30px;
+        background-color: #000000;
+        @include mixins.wh(360px, 550px);
+        @include mixins.flex(column, center, center, row, nowrap);
+
+        .viewport {
+            @include mixins.wh(330px, 520px);
+            border-radius: 30px;
+
+            .topo-celular{
+                p{
+                    color: wheat;
+                }
+            }
+
+            .area-celular {
+                @include mixins.wh(100%, 440px);
+                border-radius: 30px 30px 0 0;
+                background-color: #110e0e;
+
+            }
+
+            .menu {
+                @include mixins.wh(100%, 50px);
+                @include mixins.flex(row, spacing-around, center, row, nowrap);
+                background-color: #9e95955c;
+
+                .item {
+                    @include mixins.wh(25%, 100%);
+                    @include mixins.flex(column, center, center, column, nowrap);
+
+                    i,
+                    p {
+                        font-size: 1em;
+                        color: #d2d2d2;
+                    }
+                }
+                .active{
+                    i, p{
+                        color: #139feb;
+                    }
+                }
+
+            }
+
+            .btn-celular {
+                @include mixins.wh(100%, 30px);
+                @include mixins.flex(row, center, center, row, nowrap);
+                border-radius: 0 0 30px 30px;
+                background-color: #110e0e;
+
+                .btn-celular-item {
+                    @include mixins.wh(33%, 100%);
+                    @include mixins.flex(row, center, center, row, nowrap);
+
+                    i {
+                        font-size: small;
+                        color: #d2d2d2;
+                    }
+                }
+            }
+        }
+    }
+}
